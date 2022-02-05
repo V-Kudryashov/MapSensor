@@ -20,5 +20,5 @@ Map Sensor API contains 4 files:
 - `MapSensorComponentEditor.cs` - editor script.
 - `MapCamera.cs` - abstract class that you should implement. Provided example contains simple implementation of this class: `HeightmapCamera.cs`.
 ## Example
-
+In this example, the car is moving towards the target and avoiding the peaks of the terrain.
 ## Dependencies
