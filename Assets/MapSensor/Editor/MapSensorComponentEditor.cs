@@ -20,7 +20,7 @@ namespace VK.MapSensor
 
             EditorGUI.BeginDisabledGroup(!EditorUtilities.CanUpdateModelProperties());
             {
-                EditorGUILayout.PropertyField(so.FindProperty("m_Map"), true);
+                EditorGUILayout.PropertyField(so.FindProperty("m_MapCamera"), true);
                 EditorGUILayout.PropertyField(so.FindProperty("m_SensorName"), true);
                 EditorGUILayout.PropertyField(so.FindProperty("m_ObservationStacks"), true);
             }

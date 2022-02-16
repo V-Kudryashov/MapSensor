@@ -5,15 +5,26 @@ using UnityEngine.UI;
 
 public class CarSettings : MonoBehaviour
 {
-    public bool resetCarOnTime;
-    public bool resetTargetOnTime;
-    public bool updateTerrain;
+    public int targetFrameRate = -1;
+    public float timeScale = 1;
+    public bool resetCarOnTime = false;
+    public bool resetTargetOnTime = true;
+    public bool updateTerrain = false;
     public float tergetRange = 60;
-    public int episodeDuration = 1000;
-    public float veloWeight = 0.6f;
-    public float steerSmooth = 0.8f;
+    public int episodeDuration = 2000;
+    public float veloWeight = 1.0f;
+    public float steerSmooth = 0.9f;
 
-    public float maxAccel = 500;
+    [Tooltip("max acceleration m/s2")]
+    public float maxAccel = 8;
+    [Tooltip("max brakeTorque")]
     public float maxBrake = 50;
-    public float maxVelocity = 50;
+    [Tooltip("max velocity m/s")]
+    public float maxVelocity = 15;
+
+    private void Start()
+    {
+        Application.targetFrameRate = targetFrameRate;
+        Time.timeScale = timeScale;
+    }
 }

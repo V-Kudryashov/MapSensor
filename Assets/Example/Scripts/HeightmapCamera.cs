@@ -49,7 +49,7 @@ public class HeightmapCamera : MapCamera
         H = terrain.terrainData.GetHeights(0, 0, res, res);
     }
 
-    public override float[,,] GetFrame()
+    public override float[,,] UpdateFrame()
     {
         Vector3 pos = terrain.transform.InverseTransformPoint(agent.position);
         float cX = pos.x * posXtoMap;
@@ -96,25 +96,20 @@ public class HeightmapCamera : MapCamera
 
         return frame;
     }
+    public override float[,,] Frame { get { return frame; } }
+    public override int Width { get { return width; } }
+    public override int Height { get { return height; } }
 
     public override int[] GetShape()
     {
+        if (shape == null || shape.Length != 3)
+        {
+            Debug.Log("New Shape");
+            shape = new int[3];
+        }
+        shape[0] = height;
+        shape[1] = width;
+        shape[2] = 1;
         return shape;
     }
-    public override Texture2D GetTexture()
-    {
-        return texture;
-    }
-    public override void UpdateTexture()
-    {
-        for (int h = width - 1; h >= 0; h--)
-            for (int w = 0; w < width; w++)
-            {
-                float r = frame[h, w, 0];
-                colors[(height - h - 1) * width + w] = new Color(r, r, r);
-            }
-        texture.SetPixels(colors);
-        texture.Apply();
-    }
-
 }

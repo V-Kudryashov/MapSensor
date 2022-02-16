@@ -18,15 +18,12 @@ namespace VK.MapSensor
         /// Visual observation input.
         /// </summary>
         /// <returns>Array corresponding to the shape [x, y, ch]</returns>
-        public abstract float[,,] GetFrame();
+        public abstract float[,,] UpdateFrame();
         /// <summary>
-        /// The texture must be updated before rendering the current frame.
+        /// Use this property to render a frame
         /// </summary>
-        public abstract void UpdateTexture();
-        /// <summary>
-        /// The texture is used for visualisation only.
-        /// </summary>
-        /// <returns></returns>
-        public abstract Texture2D GetTexture();
+        public abstract float[,,] Frame { get; }
+        public abstract int Width { get; }
+        public abstract int Height { get; }
     }
 }

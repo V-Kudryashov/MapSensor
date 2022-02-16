@@ -9,16 +9,16 @@ namespace VK.MapSensor
     /// <summary>
     /// Component that wraps a <see cref="MapSensor"/>.
     /// </summary>
-    [AddComponentMenu("ML Agents/Map Sensor")]
+    [AddComponentMenu("ML Agents/Map/Map Sensor")]
     public class MapSensorComponent : SensorComponent
     {
         MapSensor m_Sensor;
         [HideInInspector, SerializeField, FormerlySerializedAs("map")]
-        MapCamera m_Map;
-        public MapCamera Map
+        MapCamera m_MapCamera;
+        public MapCamera MapCamera
         {
-            get { return m_Map; }
-            set { m_Map = value; }
+            get { return m_MapCamera; }
+            set { m_MapCamera = value; }
         }
         [HideInInspector, SerializeField, FormerlySerializedAs("sensorName")]
         string m_SensorName = "MapSensor";
@@ -55,7 +55,7 @@ namespace VK.MapSensor
         /// <returns>The created <see cref="MapSensor"/> object for this component.</returns>
         public override ISensor[] CreateSensors()
         {
-            m_Sensor = new MapSensor(Map, SensorName);
+            m_Sensor = new MapSensor(MapCamera, SensorName);
             if (ObservationStacks != 1)
             {
                 return new ISensor[] { new StackingSensor(m_Sensor, ObservationStacks) };

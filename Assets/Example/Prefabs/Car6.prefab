@@ -939,9 +939,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beb4bfe559538fd4788930bdf019e10f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Map: {fileID: 0}
+  m_MapCamera: {fileID: 0}
   m_SensorName: MapSensor
-  m_ObservationStacks: 4
+  m_ObservationStacks: 1
 --- !u!114 &6894772710032994201
 MonoBehaviour:
   m_ObjectHideFlags: 0
