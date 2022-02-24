@@ -32,7 +32,7 @@ namespace VK.MapSensor
             if (frame != null)
                 return;
             terrainMap.Init();
-            ch = terrainMap.channels.Length;
+            ch = terrainMap.channels.Count;
             shape = new int[] { height, width, ch };
             frame = new float[height, width, ch];
 
@@ -45,7 +45,7 @@ namespace VK.MapSensor
             M = terrainMap.Map;
         }
 
-        public override float[,,] UpdateFrame()
+        public override float[,,] UpdateFrame() // 2.76 ms 60x60 1.3 0.22 0.88
         {
             Vector3 pos = terrain.transform.InverseTransformPoint(transform.position);
             float cX = pos.x * posXtoMap;
@@ -66,11 +66,16 @@ namespace VK.MapSensor
                 {
                     int h1 = h + dh;
                     int w1 = w + dw;
-                    float x = cX + (w1 * cos - h1 * sin);
+                    float x = cX + (w1 * cos - h1 * sin); // 0.22
                     float y = cY - (w1 * sin + h1 * cos);
 
                     int x1 = Mathf.FloorToInt(x);
                     int y1 = Mathf.FloorToInt(y);
+
+                    //transform.TransformPoint(pos); //0.66
+                    //for (int i = 0; i < ch; i++) // 1.1 ms 7ch
+                      //  frame[h, w, i] = M[y1, x1, i];
+                    
                     int x2 = x1 + 1;
                     int y2 = y1 + 1;
                     if (x1 < 0 || y1 < 0 || x2 >= mapW || y2 >= mapH)
@@ -88,6 +93,7 @@ namespace VK.MapSensor
                     float k22 = x * y;
                     for (int i = 0; i < ch; i++)
                         frame[h, w, i] = M[y1, x1, i] * k11 + M[y1, x2, i] * k12 + M[y2, x1, i] * k21 + M[y2, x2, i] * k22;
+                    
                 }
 
 
@@ -101,7 +107,7 @@ namespace VK.MapSensor
         {
             if (shape == null || shape.Length != 3)
                 shape = new int[3];
-            ch = terrainMap.channels.Length;
+            ch = terrainMap.channels.Count;
             shape[0] = height;
             shape[1] = width;
             shape[2] = ch;

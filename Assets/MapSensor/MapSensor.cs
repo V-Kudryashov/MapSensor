@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace VK.MapSensor
 {
@@ -69,7 +70,9 @@ namespace VK.MapSensor
         {
             //System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
             //stopWatch.Start();
-            float[,,] map = m_Map.UpdateFrame(); // 0.1ms
+            Profiler.BeginSample("UpdateFrame()");
+            float[,,] map = m_Map.UpdateFrame(); // 2.76 ms
+            Profiler.EndSample();
             int height = m_Shape[0];
             int width = m_Shape[1];
             int channels = m_Shape[2];
