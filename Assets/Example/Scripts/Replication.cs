@@ -39,7 +39,7 @@ public class Replication : MonoBehaviour
                 GameObject clone = Instantiate(terrainGO, pos, terrainGO.transform.rotation);
                 clone.name = terrainGO.name + i;
                 Terrain t = clone.GetComponent<Terrain>();
-                string path = "Assets/OffRoad/Terrains/Terrain" + i + ".asset";
+                string path = "Assets/Example/Terrains/Terrain" + i + ".asset";
 #if UNITY_EDITOR
                 if (usePlane)
                     terrainData = plane;

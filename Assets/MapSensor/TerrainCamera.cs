@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace VK.MapSensor
 {
@@ -11,16 +13,26 @@ namespace VK.MapSensor
         public int height = 84;
         //public Vector2 size = new Vector2(20, 20);
         public TerrainMap terrainMap;
+        public bool useGPU;
         //public Transform agent;
 
         private int ch;
-        private float[,,] frame;
+        public float[,,] frame;
         private int[] shape = new int[3]; // h,w,ch
         private float[,,] M;
 
         private Terrain terrain;
         private float posXtoMap;
         private float posZtoMap;
+
+        static public int kiCam; // kernel index
+        static public ComputeBuffer mapBuffer;
+        static public ComputeBuffer frameBuffer;
+        static public ComputeBuffer transformBuffer;
+        static public ComputeBuffer offsetBuffer;
+        static public ComputeShader _shader;
+        private float2[] arrTrahsform = new float2[2];
+        private int[] arrOffset = new int[6];
 
         void Start()
         {
@@ -43,9 +55,76 @@ namespace VK.MapSensor
             posZtoMap = (res - 1) / terrainSize.z;
 
             M = terrainMap.Map;
+
+            if (useGPU)
+            {
+                mapBuffer = new ComputeBuffer(terrainMap.Map.Length, sizeof(float));
+                frameBuffer = new ComputeBuffer(frame.Length, sizeof(float));
+                transformBuffer = new ComputeBuffer(arrTrahsform.Length, sizeof(float) * 2);
+                offsetBuffer = new ComputeBuffer(arrOffset.Length, sizeof(int));
+
+                mapBuffer.SetData(terrainMap.Map);
+                frameBuffer.SetData(frame);
+               
+                _shader = Resources.Load<ComputeShader>("CsTerrainCamera");    // here we link computer shader code file to the shader class
+                kiCam = _shader.FindKernel("terrainCamera");                   // we retrieve kernel index by name from the code
+                                                                               // folowwing three lines allocate video memory and write there our data, kernel will then be able to use the data in calculations
+                _shader.SetBuffer(kiCam, "map", mapBuffer);
+                _shader.SetBuffer(kiCam, "frame", frameBuffer);
+                _shader.SetBuffer(kiCam, "transform", transformBuffer);
+                _shader.SetBuffer(kiCam, "offset", offsetBuffer);
+            }
         }
 
-        public override float[,,] UpdateFrame() // 2.76 ms 60x60 1.3 0.22 0.88
+
+        public override float[,,] UpdateFrame()
+        {
+            if (useGPU)
+            {
+                Vector3 pos = terrain.transform.InverseTransformPoint(transform.position);
+                float cX = pos.x * posXtoMap;
+                float cY = pos.z * posZtoMap;
+
+                Vector3 forward = terrain.transform.InverseTransformVector(transform.forward);
+                forward.y = 0;
+                float sin = forward.normalized.x;
+                float cos = forward.normalized.z;
+
+                int mapH = M.GetLength(0);
+                int mapW = M.GetLength(1);
+
+                int dw = -shape[1] / 2;
+                int dh = -shape[0];
+
+                arrTrahsform[0].x = cX;
+                arrTrahsform[0].y = cY;
+                arrTrahsform[1].x = sin;
+                arrTrahsform[1].y = cos;
+                transformBuffer.SetData(arrTrahsform);
+                arrOffset[0] = dw;
+                arrOffset[1] = dh;
+                arrOffset[2] = mapW;
+                arrOffset[3] = mapH;
+                arrOffset[4] = height;
+                arrOffset[5] = ch;
+                offsetBuffer.SetData(arrOffset);
+
+                Profiler.BeginSample("Dispatch");
+                _shader.Dispatch(kiCam, width / 8, height / 8, ch);
+                Profiler.EndSample();
+
+                Profiler.BeginSample("GetData");
+                frameBuffer.GetData(frame);
+                Profiler.EndSample();
+
+                return frame;
+            }
+            else
+            {
+                return updateFrameCPU();
+            }
+        }
+        private float[,,] updateFrameCPU() // 2.76 ms 60x60 1.3 0.22 0.88
         {
             Vector3 pos = terrain.transform.InverseTransformPoint(transform.position);
             float cX = pos.x * posXtoMap;
@@ -113,5 +192,18 @@ namespace VK.MapSensor
             shape[2] = ch;
             return shape;
         }
+
+        void OnDestroy()
+        {                   // we need to explicitly release the buffers, otherwise Unity will not be satisfied
+            if (mapBuffer != null)
+                mapBuffer.Release();
+            if (frameBuffer != null)
+                frameBuffer.Release();
+            if (transformBuffer != null)
+                transformBuffer.Release();
+            if (offsetBuffer != null)
+                offsetBuffer.Release();
+        }
+
     }
 }

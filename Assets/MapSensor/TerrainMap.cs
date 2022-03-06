@@ -30,6 +30,7 @@ namespace VK.MapSensor
     public class TerrainMap : MonoBehaviour
     {
         public int MapResolution = 513;
+        public Transform mapTr;
         public List<Channel> channels;
         public bool drawObjectsOnMap;
         public Channel objectsChannel;
@@ -55,7 +56,6 @@ namespace VK.MapSensor
         private float kx, kz;
         private float intervalX, intervalZ;
         private List<mapObject> mapObjects;
-        private Transform mapTr;
 
         void Start()
         {
@@ -75,7 +75,6 @@ namespace VK.MapSensor
             terrain = GetComponent<Terrain>();
             size = terrain.terrainData.size;
 
-            mapTr = new GameObject("mapTr").transform;
             mapTr.parent = terrain.transform;
             mapTr.position = terrain.transform.position;
             mapTr.rotation = terrain.transform.rotation;
@@ -217,7 +216,7 @@ namespace VK.MapSensor
                 mapObject.Draw();
             }
         }
-        
+
         public class mapObject
         {
             public GameObject Object;

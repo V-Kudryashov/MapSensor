@@ -18,6 +18,7 @@ namespace VK.MapSensor
             TerrainMap tm = (TerrainMap)target;
             //EditorGUIUtility.LookLikeInspector();
             SerializedProperty MapResolution = serializedObject.FindProperty("MapResolution");
+            SerializedProperty mapTr = serializedObject.FindProperty("mapTr");
             SerializedProperty channels = serializedObject.FindProperty("channels");
             SerializedProperty drawObjectsOnMap = serializedObject.FindProperty("drawObjectsOnMap");
             SerializedProperty tags = serializedObject.FindProperty("tags");
@@ -25,6 +26,7 @@ namespace VK.MapSensor
             
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(MapResolution, true);
+            EditorGUILayout.PropertyField(mapTr, true);
             EditorGUILayout.PropertyField(channels, true);
             EditorGUILayout.PropertyField(drawObjectsOnMap, true);
             if (tm.drawObjectsOnMap)

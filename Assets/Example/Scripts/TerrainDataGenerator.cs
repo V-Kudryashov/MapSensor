@@ -11,7 +11,7 @@ public class TerrainDataGenerator : MonoBehaviour
     public Bump hils;
     public Bump peaks;
     public HeightsParams heightsParams;
-    public string assetPath = "Assets/OffRoad/Terrains/Terrain0.asset";
+    public string assetPath = "Assets/Example/Terrains/Terrain0.asset";
     /// <summary>
     /// [x,y] -> (y, 0, x)
     /// </summary>

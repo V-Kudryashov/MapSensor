@@ -5,6 +5,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using VK.MapSensor;
 
 public class CarAgent : Agent
 {
@@ -16,6 +17,7 @@ public class CarAgent : Agent
     public EarlyTermination earlyTermination;
     public TerrainDataGenerator generator;
     public RewardsMonitor rewardsMonitor;
+    public TerrainCamera terrainCamera;
     public float velocityKM;
     public float smoothVelo;
 
@@ -250,6 +252,7 @@ public class CarAgent : Agent
         //statsRecorder.Add("EnvParams/" + "smoothT", rewardsMonitor.veloControl.smoothT);
         statsRecorder.Add("EnvParams/" + "maxError", earlyTermination.maxError);
         statsRecorder.Add("EnvParams/" + "duration", earlyTermination.duration);
+        statsRecorder.Add("EnvParams/" + "frame[0, 0, 0]", terrainCamera.frame[0, 0, 0]);
         rewardsMonitor.addSteps(step, total);
 
         if (trails != null)
