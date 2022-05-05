@@ -58,11 +58,11 @@
   <ItemGroup>
     <Compile Include="Assets\TagField\Editor\TagFieldPropertyDrawer.cs" />
     <Compile Include="Assets\MapSensor\Editor\MapSensorComponentEditor.cs" />
-    <Compile Include="Assets\MapSensor\Editor\TerrainMapEditor.cs" />
-    <Compile Include="Assets\MapSensor\Editor\MapDisplayEditor.cs" />
-    <Compile Include="Assets\Example\Scripts\Editor\ReplicationEditor.cs" />
-    <Compile Include="Assets\Example\Scripts\Editor\RewardsMonitorEditor.cs" />
-    <Compile Include="Assets\Example\Scripts\Editor\TerrainDataGeneratorEditor.cs" />
+    <Compile Include="Assets\Examples\4channels\Scripts\Editor\TerrainMapEditor.cs" />
+    <Compile Include="Assets\Examples\4channels\Scripts\Editor\TerrainMapDisplayEditor.cs" />
+    <Compile Include="Assets\Examples\Scripts\Editor\ReplicationEditor.cs" />
+    <Compile Include="Assets\Examples\Scripts\Editor\RewardsMonitorEditor.cs" />
+    <Compile Include="Assets\Examples\Scripts\Editor\TerrainDataGeneratorEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

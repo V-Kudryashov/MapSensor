@@ -57,35 +57,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\MapSensor\MapSensor.cs" />
-    <Compile Include="Assets\Example\Scripts\HeightmapCamera.cs" />
-    <Compile Include="Assets\Example\Scripts\Labels.cs" />
-    <Compile Include="Assets\MapSensor\MapDisplay.cs" />
-    <Compile Include="Assets\Example\Scripts\Replication.cs" />
-    <Compile Include="Assets\MapSensor\TerrainCamera.cs" />
-    <Compile Include="Assets\MapSensor\TerrainMap.cs" />
-    <Compile Include="Assets\Example\Scripts\TargetContact.cs" />
+    <Compile Include="Assets\Examples\1channel\Scripts\HeightmapCamera.cs" />
+    <Compile Include="Assets\Examples\Scripts\Labels.cs" />
+    <Compile Include="Assets\Examples\4channels\Scripts\TerrainMapDisplay.cs" />
+    <Compile Include="Assets\Examples\Scripts\Replication.cs" />
+    <Compile Include="Assets\Examples\4channels\Scripts\TerrainCamera.cs" />
+    <Compile Include="Assets\Examples\4channels\Scripts\TerrainMap.cs" />
+    <Compile Include="Assets\Examples\Scripts\CarContact.cs" />
+    <Compile Include="Assets\Examples\Scripts\TargetContact.cs" />
     <Compile Include="Assets\MapSensor\MapCamera.cs" />
-    <Compile Include="Assets\Example\Scripts\CarController\ACarController.cs" />
-    <Compile Include="Assets\Example\Scripts\TerrainDataGenerator.cs" />
-    <Compile Include="Assets\Example\Scripts\SteerArrow.cs" />
-    <Compile Include="Assets\Example\Scripts\RewardsMonitor.cs" />
-    <Compile Include="Assets\Example\Scripts\Trails.cs" />
-    <Compile Include="Assets\Example\Scripts\TargetArrow.cs" />
-    <Compile Include="Assets\Example\Scripts\CarAgent.cs" />
+    <Compile Include="Assets\Examples\Scripts\CarController\ACarController.cs" />
+    <Compile Include="Assets\Examples\Scripts\TerrainDataGenerator.cs" />
+    <Compile Include="Assets\Examples\Scripts\SteerArrow.cs" />
+    <Compile Include="Assets\Examples\Scripts\RewardsMonitor.cs" />
+    <Compile Include="Assets\Examples\Scripts\Trails.cs" />
+    <Compile Include="Assets\Examples\Scripts\TargetArrow.cs" />
+    <Compile Include="Assets\Examples\Scripts\CarAgent.cs" />
     <Compile Include="Assets\MapSensor\MapSensorComponent.cs" />
-    <Compile Include="Assets\Example\Scripts\CarController.cs" />
-    <Compile Include="Assets\Example\Scripts\CarSettings.cs" />
-    <Compile Include="Assets\Example\Scripts\TerrainContact.cs" />
-    <Compile Include="Assets\Example\Scripts\HeightMapOld.cs" />
-    <Compile Include="Assets\Example\Scripts\EarlyTermination.cs" />
-    <Compile Include="Assets\TagField\TagFieldAttribute.cs" />
-    <Compile Include="Assets\Example\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\MapSensor\TerrainMaps.cs" />
+    <Compile Include="Assets\Examples\Scripts\CarController.cs" />
     <Compile Include="Assets\Compute shader example\cpuSideCode.cs" />
+    <Compile Include="Assets\Examples\1channel\Scripts\HeightmapDisplay.cs" />
+    <Compile Include="Assets\Examples\Scripts\CarSettings.cs" />
+    <Compile Include="Assets\Examples\Scripts\TerrainContact.cs" />
+    <Compile Include="Assets\Examples\Scripts\EarlyTermination.cs" />
+    <Compile Include="Assets\TagField\TagFieldAttribute.cs" />
+    <Compile Include="Assets\Examples\Scripts\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Compute shader example\readme.txt" />
-    <None Include="Assets\MapSensor\Resources\CsTerrainCamera.compute" />
+    <None Include="Assets\Examples\4channels\Resources\CsTerrainCamera.compute" />
     <None Include="Assets\Compute shader example\Resources\csFractal.compute" />
   </ItemGroup>
   <ItemGroup>
