@@ -26,5 +26,25 @@ Map Sensor API contains 4 files:
 In this example, the role of the map is performed by an array of heights obtained from the Terrain. `float[,] H = terrain.terrainData.GetHeights(0, 0, res, res);`
 The car is moving towards the target and avoiding the peaks of the terrain. [Video](https://youtu.be/lVXY7S-cbHY)
 ### 4 channels camera
+It is more complex example. The `TerrainMap` script allows you to get a map that includes up to eight channels:
+- `Height`
+- `NormalX`
+- `NormalY`
+- `NormalMagnitude`
+- `CurvatureX`
+- `CurvatureY`
+- `CurvatureMagnitude`
+- `Objects`
+Most of the data comes from `TerrainData`:
+- `terrainData.GetInterpolatedHeights`
+- `terrainData.GetInterpolatedNormal(X, Y);`
+Objects are moving objects, such as other Agents.
 
+`TerrainCamera` uses 4 channels:
+- `NormalX`
+- `NormalY`
+- `CurvatureMagnitude`
+- `Objects`
+ 
+In this example 3 cars  is moving towards the target and avoiding the peaks and other cars.
 ## Dependencies
