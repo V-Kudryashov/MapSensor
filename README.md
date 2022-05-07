@@ -17,10 +17,10 @@ For example, we need the agent to be able to see the heightmap. To solve this pr
 * Map Sensor does not use graphics. We can use the `no_graphics` engine setting.
 ## Files
 Map Sensor API contains 4 files:
-- `MapSensor.cs` - contains `MapSensor` class. The 'MapSensor' receives one frame from the 'MapCamera' and writes it directly to the 'ObservationWriter'.
+- `MapSensor.cs` - contains `MapSensor` class. The `MapSensor` receives one frame from the `MapCamera` and writes it directly to the `ObservationWriter`.
 - `MapSensorComponent.cs` - script to be attached to the Agent object.
 - `MapSensorComponentEditor.cs` - editor script.
-- `MapCamera.cs` - abstract class that you should implement. The main task of this class is to cut a rectangular frame from the map array. Provided examples contains 2 implementations of this class: Simple 1 channel `HeightmapCamera.cs` and more complex 4 channel 'TerrainCamera.cs'.
+- `MapCamera.cs` - abstract class that you should implement. The main task of this class is to cut a rectangular frame from the map array. Provided examples contains 2 implementations of this class: Simple 1 channel `HeightmapCamera.cs` and more complex 4 channel `TerrainCamera.cs`.
 ## Examples
 ### 1 channel camera
 ### 4 channels camera
