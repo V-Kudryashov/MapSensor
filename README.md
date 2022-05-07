@@ -37,7 +37,7 @@ It is more complex example. The `TerrainMap` script allows you to get a map that
 - `Objects`
 
 Most of the data comes from `TerrainData`: `terrainData.GetInterpolatedHeights`, `terrainData.GetInterpolatedNormal(X, Y);`. 
-Objects are moving objects, such as other Agents.
+`Objects` are moving objects, such as other Agents.
 
 `TerrainCamera` uses 4 channels:
 - `NormalX`
