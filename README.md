@@ -47,3 +47,5 @@ Most of the data comes from `TerrainData`: `terrainData.GetInterpolatedHeights`,
  
 In this example 3 cars  is moving towards the target and avoiding the peaks and other cars.
 ## Dependencies
+Unity 2020.3.26f1
+ML Agents 2.1.0-exp.1
