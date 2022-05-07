@@ -9,7 +9,7 @@
 ## Description
 The Map Sensor is designed to use non-visual data as visual observations.
 
-For example, we need the agent to be able to see the heightmap. To solve this problem, you can draw a heightmap on the plane and then get observations using the Camera Sensor. At first I did just that. It works. To solve this problem, the Map Sensor has some advantages.
+For example, we need the agent to be able to see the heightmap. To solve this problem, you can draw a heightmap on the plane and then get observations using the Camera Sensor. At first I did just that. It works. Then I developed a special Map Sensor similar to the Camera Sensor. Map Sensor has some advantages over Camera Sensor.
 * Map Sensor faster than Camera Sensor. No camera rendering, no image to array conversion.
 * Map Sensor has an unlimited number of channels. Camera Sensor has 1 (greyscale) or 3 (RGB) channels.
 * Map Sensor does not use graphics. We can use the `no_graphics` engine setting.
