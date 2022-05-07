@@ -23,6 +23,8 @@ Map Sensor API contains 4 files:
 - `MapCamera.cs` - abstract class that you should implement. The main task of this class is to cut a rectangular frame from the map array. Provided examples contains 2 implementations of this class: Simple 1 channel `HeightmapCamera.cs` and more complex 4 channel `TerrainCamera.cs`.
 ## Examples
 ### 1 channel camera
+In this example, the role of the map is performed by an array of heights obtained from the Terrain. `float[,] H = terrain.terrainData.GetHeights(0, 0, res, res);`
+The car is moving towards the target and avoiding the peaks of the terrain. [Video](https://youtu.be/lVXY7S-cbHY)
 ### 4 channels camera
-In this example, the car is moving towards the target and avoiding the peaks of the terrain. [Video](https://youtu.be/lVXY7S-cbHY)
+
 ## Dependencies
