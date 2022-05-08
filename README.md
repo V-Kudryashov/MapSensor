@@ -24,7 +24,7 @@ Map Sensor API contains 4 files:
 ## Examples
 ### 1 channel camera
 In this example, the role of the map is performed by an array of heights obtained from the Terrain. `float[,] H = terrain.terrainData.GetHeights(0, 0, res, res);`
-The car is moving towards the target and avoiding the peaks of the terrain. [Video](https://youtu.be/lVXY7S-cbHY)
+The car is moving towards the target and avoiding the peaks of the terrain. [Video](https://youtu.be/MPu49Scu4fk)
 ### 4 channels camera
 It is more complex example. The `TerrainMap` script allows you to get a map that includes up to eight channels:
 - `Height`
@@ -45,7 +45,7 @@ Most of the data comes from `TerrainData`: `terrainData.GetInterpolatedHeights`,
 - `CurvatureMagnitude`
 - `Objects`
  
-In this example 3 cars  is moving towards the target and avoiding the peaks and other cars.
+In this example 3 cars  is moving towards the target and avoiding the peaks and other cars. [Video](https://youtu.be/OlC7LPSNq_E)
 ## Dependencies
 - Unity 2020.3.26f1
 - ML Agents 2.1.0-exp.1
