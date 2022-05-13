@@ -3,7 +3,7 @@
 **Table of Contents**
 - [Description](#description)
 - [Files](#files)
-- [Examples](#example)
+- [Examples](#examples)
     - [1 channel camera](#1-channel-camera)
     - [4 channels camera](#4-channels-camera)
 - [Dependencies](#dependencies)
